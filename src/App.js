@@ -11,7 +11,7 @@ function Tip() {
 
   let selfTip = Number((Number(selfLike) / 100) * bill);
   let friendTip = Number((Number(friendLike) / 100) * bill);
-  let totalBill = Number(Number(bill) + selfTip + friendTip);
+  let totalBill = Number(Number(bill) + (selfTip + friendTip) / 2);
 
   function handleReset() {
     setBill(0);
@@ -27,18 +27,25 @@ function Tip() {
 
       <p>
         How did you like the service?{" "}
-        <input
-          value={selfLike}
-          onChange={(e) => setSelfLike(e.target.value)}
-        ></input>
+        <select value={selfLike} onChange={(e) => setSelfLike(e.target.value)}>
+          <option value={0}>Dissatisfied (0%)</option>
+          <option value={5}>It was okay (5%)</option>
+          <option value={10}>It was good (10%)</option>
+          <option value={20}>Absolutely Amazing! (20%)</option>
+        </select>
       </p>
 
       <p>
         How did your friend like the sevice?{" "}
-        <input
+        <select
           value={friendLike}
           onChange={(e) => setFriendLike(e.target.value)}
-        ></input>
+        >
+          <option value={0}>Dissatisfied (0%)</option>
+          <option value={5}>It was okay (5%)</option>
+          <option value={10}>It was good (10%)</option>
+          <option value={20}>Absolutely Amazing! (20%)</option>
+        </select>
       </p>
 
       <b>
